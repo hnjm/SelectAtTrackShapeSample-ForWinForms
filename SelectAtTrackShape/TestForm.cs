@@ -19,13 +19,14 @@ namespace SelectAtTrackShape
 
         private void TestForm_Load(object sender, EventArgs e)
         {
-            winformsMap1.MapUnit = GeographyUnit.DecimalDegree;
-            winformsMap1.CurrentExtent = new RectangleShape(-120, 70, 108, -64);
+            winformsMap1.MapUnit = GeographyUnit.Meter;
+            winformsMap1.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
+            winformsMap1.CurrentExtent = new RectangleShape(-12819569, 7708233, 13244845, -8220019);
             winformsMap1.BackgroundOverlay.BackgroundBrush = new GeoSolidBrush(GeoColor.FromArgb(255, 198, 255, 255));
 
-            //Displays the World Map Kit as a background.
-            ThinkGeo.MapSuite.WinForms.WorldStreetsAndImageryOverlay worldMapKitDesktopOverlay = new ThinkGeo.MapSuite.WinForms.WorldStreetsAndImageryOverlay();
-            winformsMap1.Overlays.Add(worldMapKitDesktopOverlay);
+            // Add ThinkGeoCloudMapsOverlay as basemap
+            ThinkGeoCloudMapsOverlay thinkGeoCloudMapsOverlay = new ThinkGeoCloudMapsOverlay();
+            winformsMap1.Overlays.Add(thinkGeoCloudMapsOverlay);
 
             //Layer to do the spatial query on.
             ShapeFileFeatureLayer worldLayer = new ShapeFileFeatureLayer(@"..\..\Data\Countries02.shp");
