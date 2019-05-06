@@ -20,12 +20,16 @@ namespace SelectAtTrackShape
         private void TestForm_Load(object sender, EventArgs e)
         {
             winformsMap1.MapUnit = GeographyUnit.Meter;
-            winformsMap1.ZoomLevelSet = ThinkGeoCloudMapsOverlay.GetZoomLevelSet();
+            winformsMap1.ZoomLevelSet = new ThinkGeoCloudMapsZoomLevelSet();
             winformsMap1.CurrentExtent = new RectangleShape(-12819569, 7708233, 13244845, -8220019);
             winformsMap1.BackgroundOverlay.BackgroundBrush = new GeoSolidBrush(GeoColor.FromArgb(255, 198, 255, 255));
 
-            // Add ThinkGeoCloudMapsOverlay as basemap
-            ThinkGeoCloudMapsOverlay thinkGeoCloudMapsOverlay = new ThinkGeoCloudMapsOverlay();
+            /*===========================================
+               Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require
+               a Client ID and Secret. These were sent to you via email when you signed up
+               with ThinkGeo, or you can register now at https://cloud.thinkgeo.com.
+            ===========================================*/
+            ThinkGeoCloudRasterMapsOverlay thinkGeoCloudMapsOverlay = new ThinkGeoCloudRasterMapsOverlay();
             winformsMap1.Overlays.Add(thinkGeoCloudMapsOverlay);
 
             //Layer to do the spatial query on.
